@@ -10,19 +10,16 @@ logger = setup_logger()
 
 @dataclass
 class GestureResult:
-    """Data class for gesture recognition results"""
     letter: str
     confidence: float
     hand_label: str
 
 class HandGestureRecognizer:
-    """Recognizes hand gestures and converts them to letters"""
     def __init__(self):
         self.gesture_database = GestureDatabase(Config.GESTURE_DATABASE_PATH)
         self._previous_gestures = deque(maxlen=5)  # Gesture smoothing
     
     def calculate_angle(self, p1: Any, p2: Any, p3: Any) -> float:
-        """Calculate angle between three points"""
         try:
             v1 = np.array([p1.x - p2.x, p1.y - p2.y])
             v2 = np.array([p3.x - p2.x, p3.y - p2.y])
@@ -35,7 +32,6 @@ class HandGestureRecognizer:
             return 0.0
 
     def recognize_gesture(self, landmarks: Any, hand_label: str) -> GestureResult:
-        """Recognize letter based on hand landmarks"""
         try:
             max_confidence = 0
             best_match = "?"

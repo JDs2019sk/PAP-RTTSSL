@@ -4,7 +4,6 @@ from utils.logger import setup_logger
 logger = setup_logger()
 
 def main():
-    """Main entry point"""
     try:
         detector = SignLanguageDetector()
         detector.run()

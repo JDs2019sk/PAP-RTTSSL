@@ -8,20 +8,17 @@ from utils.logger import setup_logger
 logger = setup_logger()
 
 class UIElement(ABC):
-    """Abstract base class for UI elements"""
     @abstractmethod
     def draw(self, frame: np.ndarray) -> None:
         pass
 
 class Button(UIElement):
-    """Interactive button element for the UI"""
     def __init__(self, position: Tuple[int, int], size: Tuple[int, int], text: str):
         self.position = position
         self.size = size
         self.text = text
         
     def draw(self, frame: np.ndarray) -> None:
-        """Draw the button on the frame"""
         try:
             overlay = frame.copy()
             cv2.rectangle(overlay, self.position,
@@ -41,6 +38,5 @@ class Button(UIElement):
             raise
         
     def contains_point(self, x: int, y: int) -> bool:
-        """Check if a point is within the button's bounds"""
         return (self.position[0] <= x <= self.position[0] + self.size[0] and
                 self.position[1] <= y <= self.position[1] + self.size[1])

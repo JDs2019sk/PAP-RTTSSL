@@ -3,7 +3,6 @@ from typing import Tuple
 
 @dataclass
 class Config:
-    """Application configuration settings"""
     WINDOW_NAME: str = 'Sign Language Detector'
     FPS_SAMPLE_SIZE: int = 30
     BUTTON_TEXT: str = 'Exit'

@@ -6,7 +6,10 @@
 
 ## Instalation
 
-1. Install Python Libraries
-   ```
-   pip install
-   ```
+1. Install requiremnets.txt;
+
+2. Run the main app:
+
+```
+   python main.py
+```

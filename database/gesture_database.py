@@ -7,13 +7,11 @@ from utils.logger import setup_logger
 logger = setup_logger()
 
 class GestureDatabase:
-    """Manages the gesture database and its operations"""
     def __init__(self, database_path: str):
         self.database_path = database_path
         self.gestures = self._load_database()
 
     def _load_database(self) -> Dict[str, List[Tuple[int, int, int, float, float]]]:
-        """Load gesture database from JSON file"""
         try:
             if Path(self.database_path).exists():
                 with open(self.database_path, 'r') as f:
@@ -26,7 +24,6 @@ class GestureDatabase:
             return self._get_default_gestures()
 
     def _get_default_gestures(self) -> Dict[str, List[Tuple[int, int, int, float, float]]]:
-        """Default gesture database with common signs"""
         return {
             'A': [
                 (6, 7, 8, 0, 30),      # Index finger closed
@@ -44,7 +41,6 @@ class GestureDatabase:
         }
 
     def save_gesture(self, letter: str, gesture_data: List[Tuple[int, int, int, float, float]]) -> None:
-        """Save new gesture to database"""
         try:
             self.gestures[letter] = gesture_data
             with open(self.database_path, 'w') as f:
